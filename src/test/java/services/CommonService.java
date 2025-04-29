@@ -20,6 +20,12 @@ public class CommonService {
         return performRequest("GET", requestSpecification, endpoint);
     }
 
+    public Response get(String endpoint, String token) {
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.header("Authorization","Bearer " + token);
+        return performRequest("GET", requestSpecification, endpoint);
+    }
+
     public Response put(Map<String, String> requestBody, String endpoint) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.body(requestBody);
