@@ -5,11 +5,12 @@ import modelObject.response.ResponseCreateUser;
 import modelObject.response.ResponseToken;
 import org.testng.annotations.Test;
 import services.AccountService;
+import sharedData.SharedData;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreateUserBETest {
+public class CreateUserBETest extends SharedData {
 
     @Test
     public void testMethod() {
@@ -20,6 +21,7 @@ public class CreateUserBETest {
         ResponseCreateUser responseCreateUser = accountService.createAccount(requestBody);
         String userID = responseCreateUser.getUserID();
         System.out.println(userID);
+        System.out.println();
 
         System.out.println("=== STEP 2: CREATE TOKEN FOR USER ===");
         ResponseToken responseToken = accountService.generateToken(requestBody);
