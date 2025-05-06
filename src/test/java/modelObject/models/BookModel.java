@@ -1,4 +1,4 @@
-package modelObject;
+package modelObject.models;
 
 import lombok.Getter;
 import lombok.Setter;

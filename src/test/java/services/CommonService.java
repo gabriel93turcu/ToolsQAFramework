@@ -4,12 +4,13 @@ import client.RestClient;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import modelObject.request.RequestCreateUser;
 
 import java.util.Map;
 
 public class CommonService {
 
-    public Response post(Map<String, String> requestBody, String endpoint) {
+    public Response post(Object requestBody, String endpoint) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.body(requestBody);
         return performRequest("POST", requestSpecification, endpoint);

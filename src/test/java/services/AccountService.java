@@ -1,21 +1,22 @@
 package services;
 
 import io.restassured.response.Response;
-import modelObject.ResponseCreateUser;
-import modelObject.ResponseToken;
+import modelObject.request.RequestCreateUser;
+import modelObject.response.ResponseCreateUser;
+import modelObject.response.ResponseToken;
 import org.testng.Assert;
 
 import java.util.Map;
 
 public class AccountService extends CommonService {
 
-    public ResponseCreateUser createAccount(Map<String, String> requestBody) {
+    public ResponseCreateUser createAccount(RequestCreateUser requestBody) {
         Response response = post(requestBody, "/Account/v1/User");
         Assert.assertEquals(response.getStatusCode(), 201);
         return response.as(ResponseCreateUser.class);
     }
 
-    public ResponseToken generateToken(Map<String, String> requestBody) {
+    public ResponseToken generateToken(RequestCreateUser requestBody) {
         Response response = post(requestBody, "/Account/v1/GenerateToken");
         Assert.assertEquals(response.getStatusCode(), 200);
         return response.as(ResponseToken.class);
