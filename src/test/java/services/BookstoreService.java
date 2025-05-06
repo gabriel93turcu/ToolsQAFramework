@@ -10,6 +10,4 @@ public class BookstoreService extends CommonService {
         Assert.assertEquals(response.getStatusCode(),200);
         response.getBody().prettyPrint();
     }
-
-
 }

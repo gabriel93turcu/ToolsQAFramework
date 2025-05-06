@@ -58,6 +58,13 @@
             <version>2.18.3</version> <!-- Poți pune ultima versiune -->
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
 </project>
