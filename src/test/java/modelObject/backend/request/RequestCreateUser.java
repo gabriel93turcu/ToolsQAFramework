@@ -1,4 +1,4 @@
-package modelObject.request;
+package modelObject.backend.request;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;

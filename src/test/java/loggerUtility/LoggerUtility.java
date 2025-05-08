@@ -3,6 +3,7 @@ package loggerUtility;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.internal.RequestSpecificationImpl;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
@@ -23,12 +24,18 @@ public class LoggerUtility {
         logger.info(message);
     }
 
-    //pregatim loguri pentru request: url, method type, body
     public static void requestLogs(RequestSpecification requestSpecification, String path, String methodType) {
         infoLog("=== Request INFO ===");
         infoLog(getRequestURL(path));
         infoLog(getRequestMethod(methodType));
         infoLog(getRequestBody(requestSpecification));
+    }
+
+    public static void responseLogs(Response response) {
+        infoLog("=== Response INFO ===");
+        infoLog(getResponseStatusCode(response));
+        infoLog(getResponseStatus(response));
+        infoLog(getResponseBody(response));
     }
 
     private static String getRequestURL(String path){
@@ -37,6 +44,14 @@ public class LoggerUtility {
 
     private static String getRequestMethod(String methodType){
         return "Request METHOD: "+methodType;
+    }
+
+    private static String getResponseStatus(Response response) {
+        return "Response STATUS: " + response.getStatusLine();
+    }
+
+    private static String getResponseStatusCode(Response response) {
+        return "Response STATUS CODE: " + response.getStatusCode();
     }
 
     @SneakyThrows(JsonProcessingException.class)
@@ -52,4 +67,13 @@ public class LoggerUtility {
         return requestBodyMessage;
     }
 
+    private static String getResponseBody(Response response) {
+        String responseBodyMessage = "Response BODY: \n";
+
+        if (response.getBody() != null) {
+            return responseBodyMessage + response.getBody().asPrettyString();
+        } else  {
+            return "";
+        }
+    }
 }

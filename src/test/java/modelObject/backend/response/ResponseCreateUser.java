@@ -1,4 +1,4 @@
-package modelObject.response;
+package modelObject.backend.response;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,11 +1,10 @@
-package services;
+package backend.services;
 
-import client.RestClient;
+import backend.client.RestClient;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import loggerUtility.LoggerUtility;
-import modelObject.request.RequestCreateUser;
 
 import java.util.Map;
 
@@ -16,20 +15,28 @@ public class CommonService {
         requestSpecification.body(requestBody);
         LoggerUtility.requestLogs(requestSpecification, endpoint, "POST");
 
-        return performRequest("POST", requestSpecification, endpoint);
+        Response response = performRequest("POST", requestSpecification, endpoint);
+        LoggerUtility.responseLogs(response);
+        return response;
     }
 
     public Response get(String endpoint) {
         RequestSpecification requestSpecification = RestAssured.given();
-
         LoggerUtility.requestLogs(requestSpecification, endpoint, "GET");
-        return performRequest("GET", requestSpecification, endpoint);
+
+        Response response = performRequest("GET", requestSpecification, endpoint);
+        LoggerUtility.responseLogs(response);
+        return response;
     }
 
     public Response get(String endpoint, String token) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.header("Authorization","Bearer " + token);
-        return performRequest("GET", requestSpecification, endpoint);
+        LoggerUtility.requestLogs(requestSpecification, endpoint, "GET");
+
+        Response response = performRequest("GET", requestSpecification, endpoint);
+        LoggerUtility.responseLogs(response);
+        return response;
     }
 
     public Response put(Map<String, String> requestBody, String endpoint) {
