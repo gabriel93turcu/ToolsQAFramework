@@ -1,6 +1,7 @@
 package tests.e2e;
 
 import frontend.pages.LoginPage;
+import io.qameta.allure.Feature;
 import modelObject.ModelPath;
 import modelObject.backend.request.RequestCreateUser;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ import backend.services.AccountService;
 import sharedData.Hooks;
 import suites.AtfSuite;
 
+@Feature("FeatureE2E")
 public class CreateUserTest extends Hooks {
 
     @Test(groups = AtfSuite.E2E_SUITE)

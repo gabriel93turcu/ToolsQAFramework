@@ -1,5 +1,7 @@
 package tests.backend;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import modelObject.ModelPath;
 import modelObject.backend.request.RequestCreateUser;
 import modelObject.backend.response.ResponseCreateUser;
@@ -8,9 +10,11 @@ import org.testng.annotations.Test;
 import backend.services.AccountService;
 import sharedData.Hooks;
 
+@Feature("FE-123")
+@Story("ST-321")
 public class CreateUserBETest extends Hooks {
 
-    @Test
+    @Test(description = "TC-123: Acesta este testul lui Gabi")
     public void testMethod() {
         AccountService accountService = new AccountService();
 
