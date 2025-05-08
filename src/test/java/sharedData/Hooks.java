@@ -9,6 +9,8 @@ public class Hooks {
     private String testName;
     public DriverService driverService;
 
+    //tre sa facem o logica care sa stearga folderu de allure-results
+
     @BeforeMethod(alwaysRun = true)
     public void prepareEnvironment() {
         testName = this.getClass().getSimpleName();
