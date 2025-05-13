@@ -10,7 +10,7 @@ import sharedData.Hooks;
 @Story("ST-322")
 public class ObtainAllBooksTest extends Hooks {
 
-    @Test
+    @Test(description = "TC-DEF: Acesta este testul lui Razvan")
     public void testMethod() {
         BookstoreService bookstoreService = new BookstoreService();
         bookstoreService.getAllBooks();

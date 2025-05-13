@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Extra logging related to initialization of Log4j.
- Set to debug or trace if log4j initialization is failing. -->
 <Configuration status="warn">
     <Appenders>
-        <!-- Console appender configuration -->
+        <!-- Console appender -->
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout
-                    pattern="%d{yyyy-MM-dd HH:mm:ss} %t %-5p %m%n" />
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %t %-5p %m%n"/>
         </Console>
+
+        <!-- Allure appender -->
+        <AllureAppender name="AllureAppender">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %t %-5p %m%n"/>
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+        </AllureAppender>
     </Appenders>
+
     <Loggers>
-        <!-- Root logger referring to console appender -->
         <Root level="info" additivity="false">
-            <AppenderRef ref="console" />
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="AllureAppender"/>
         </Root>
     </Loggers>
 </Configuration>

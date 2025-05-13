@@ -14,7 +14,7 @@ import sharedData.Hooks;
 @Story("ST-321")
 public class CreateUserBETest extends Hooks {
 
-    @Test(description = "TC-123: Acesta este testul lui Gabi")
+    @Test(description = "TC-ABC: Acesta este testul lui Gabi")
     public void testMethod() {
         AccountService accountService = new AccountService();
 

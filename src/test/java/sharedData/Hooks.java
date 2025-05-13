@@ -1,15 +1,21 @@
 package sharedData;
 
+import allureUtility.AllureCleaner;
 import loggerUtility.LoggerUtility;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import suites.AtfSuite;
 
 public class Hooks {
     private String testName;
     public DriverService driverService;
 
-    //tre sa facem o logica care sa stearga folderu de allure-results
+    @BeforeSuite(alwaysRun = true)
+    public void prepareSuite(){
+        AllureCleaner.deleteFolder();
+    }
 
     @BeforeMethod(alwaysRun = true)
     public void prepareEnvironment() {
